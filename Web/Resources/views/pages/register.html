@@ -1,0 +1,25 @@
+{login=
+-}
+<h4 class="page-header">Inscription</h4>
+<div class="col-sm-5">
+    <form class="form-signin" action="" method="POST">
+        <input class="form-control" required autofocus type="text" name="pseudo" value="" placeholder="Pseudo*"/>
+        {register.error.pseudo}
+        <input class="form-control" required type="password" name="password" value="" placeholder="Mot de passe*"/>
+        {register.error.password}
+        <input class="form-control" required type="password" name="confirm" value="" placeholder="Confirmation*"/>
+        {register.error.confirm}
+        <input class="form-control" required type="email" name="email" value="" placeholder="Email*"/>
+        {register.error.email}
+        <select class="form-control" required name="mageType">
+            <option value="" disabled selected>Type de mage</option>
+            {mageType}
+            <option value="{MageTypeId}">{MageTypeName}</option>
+            {/mageType}
+        </select>
+        {register.error.mageType}
+        <br />
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Inscription" name="register" />
+    </form>
+</div>
+{/login}

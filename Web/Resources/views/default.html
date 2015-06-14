@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="ISO-8859-1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Fairy game</title>
+
+        <link rel="stylesheet" href="./public/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./public/css/design.css">
+
+
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Fairy game</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+
+
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.php?pages=index">Accueil</a></li>
+                        {login=
+                        <li><a href="index.php?pages=logout">Déconnexion</a></li>               
+                        -}
+                        <li><a href="index.php?pages=login">Connexion</a></li>
+                        <li><a href="index.php?pages=register">Inscription</a></li>
+                        {/login}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                {login=
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <ul class="nav nav-sidebar">
+                        <li><a href="index.php?pages=overview">Vue d'ensemble <span class="sr-only">(current)</span></a></li>
+                        <li><a href="index.php?pages=geography">Geographie</a></li>
+                    </ul>
+                    <!-- Personel -->
+                    <ul class="nav nav-sidebar">
+                        <li><a href="index.php?pages=city">Ville</a></li>
+                        <li><a href="index.php?pages=cityMission">Missions disponibles</a></li>
+                        <li><a href="index.php?pages=missionProgress">Missions en cours</a></li>
+                        <li><a href="index.php?pages=cityShop">Magasins</a></li>
+                    </ul>
+                    <!-- Guilde -->
+                    <ul class="nav nav-sidebar">
+                        <li><a href="index.php?pages=guild">Guilde</a></li>
+                        <li><a href="index.php?pages=guildhouse">Maison de guilde</a></li>
+                        <li><a href="index.php?pages=guildMission">Missions de guilde</a></li>
+                        <li><a href="index.php?pages=guildShop">Magasin de guilde</a></li>
+                    </ul>
+                </div>
+                -}
+                {/login}
+
+                <div class="col-sm-7 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    {pages}
+                </div>
+
+                {login=
+                <div class="col-sm-3 col-sm-offset-11 col-md-1 sidebar right" align="center">
+                </div>
+                -}
+                {/login}
+            </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="./public/javascript/bootstrap.min.js"></script>
+    </body>
+</html>

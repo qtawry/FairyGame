@@ -1,0 +1,10 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteRule ^install$ ../Outils/importation.php [L]
+
+RewriteRule ^(.*)/public/(.*)$ Resources/public/$2 [L]
+RewriteRule ^public/(.*)$ Resources/public/$1 [L]
+RewriteCond ^%{REQUEST_URL} !/public
+
+RewriteRule ^(.*)$ index.php [L]
