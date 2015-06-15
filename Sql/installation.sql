@@ -50,6 +50,7 @@ MissionName VARCHAR(150),
 MissionLevel INT,
 MissionXP INT,
 MissionInfluence INT,
+MissionGold INT,
 PRIMARY KEY (MissionId) ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS TypeEffect ;

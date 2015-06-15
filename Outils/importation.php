@@ -144,19 +144,23 @@ try {
     $db->query("insert into BuildingCost (ResId, BuildingId, BCAmount) values({$ressources['Argent'][0]},{$buildings['Tableau de mission'][0]},10000);");
     $db->query("insert into BuildingCost (ResId, BuildingId, BCAmount) values({$ressources['Influence'][0]},{$buildings['Tableau de mission'][0]},10000);");
     echo "<span class='label label-success'>DONE</span></p>";
-    
-    
+
+
     echo "<p>Creating Artefact costs";
     $db->query("insert into ArtefactCost (ResId, ArtefactId, ACAmount) values({$ressources['Argent'][0]},{$artefacts['Potion de soin 1'][0]},10);");
-    
+
     $db->query("insert into ArtefactCost (ResId, ArtefactId, ACAmount) values({$ressources['Argent'][0]},{$artefacts['Potion de soin 2'][0]},90);");
-    
+
     $db->query("insert into ArtefactCost (ResId, ArtefactId, ACAmount) values({$ressources['Argent'][0]},{$artefacts['Potion de soin 3'][0]},150);");
-    
+
     $db->query("insert into ArtefactCost (ResId, ArtefactId, ACAmount) values({$ressources['Argent'][0]},{$artefacts['Potion de soin 4'][0]},500);");
-    
+
     $db->query("insert into ArtefactCost (ResId, ArtefactId, ACAmount) values({$ressources['Argent'][0]},{$artefacts['Gemme de pouvoir'][0]},10000);");
     echo "<span class='label label-success'>DONE</span></p>";
+
+    echo "<p>Creating Missions";
+    $db->query("insert into Mission (MissionName, MissionLevel, MissionXP, MissionInfluence, MissionGold) values('Mission 1', 1, 20, 10, 100);");
+    echo "<span class='label label-warning'>TODO</span></p>";
 
 
 

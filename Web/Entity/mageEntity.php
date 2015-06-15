@@ -20,36 +20,6 @@ class mageEntity extends sqlLibrary {
         return $this->query($sql);
     }
     
-    public function getAttack($mage){
-        $attack = $this->query("select MageAttack + (MageTypeAttack * level) from Mage inner join MageIs using (MageId) inner join MageType using (MageTypeId) where MageName = {$mage}");
-        var_dump($attack);
-        return $attack[0];
-    }
-    
-    public function getHP($mage){
-        $attack = $this->query("select MageHP + (MageTypeHP * level) from Mage inner join MageIs using (MageId) inner join MageType using (MageTypeId) where MageName = {$mage}");
-        var_dump($attack);
-        return $attack[0];
-    }
-    
-    public function getSupport($mage){
-        $attack = $this->query("select MageSupport + (MageTypeSupport * level) from Mage inner join MageIs using (MageId) inner join MageType using (MageTypeId) where MageName = {$mage}");
-        var_dump($attack);
-        return $attack[0];
-    }
-    
-    public function getType($mage){
-        $attack = $this->query("select MageTypeName from Mage inner join MageIs using (MageId) inner join MageType using (MageTypeId) where MageName = {$mage}");
-        var_dump($attack);
-        return $attack[0];
-    }
-    
-    public function getXP($mage){
-        $attack = $this->query("select MageXP from Mage where MageName = {$mage}");
-        var_dump($attack);
-        return $attack[0];
-    }
-    
     public function getInfos($mage){
         $attack = $this->query("select "
                 . "MageName, "
