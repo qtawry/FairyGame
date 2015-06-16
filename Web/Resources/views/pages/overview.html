@@ -13,7 +13,7 @@
             Type du mage
         </td>
         <td>
-            {mageType}
+            {mageType} ( niv : {mageLevel} )
         </td>
     </tr>
     <tr>
@@ -45,8 +45,10 @@
             Expérience
         </td>
         <td>
-            <div class="progress-bar" role="progressbar" aria-valuenow="{mageXP}" aria-valuemin="0" aria-valuemax="{mageXPMax}" style="width: {magePercentXP}%">
-                {mageXP} / {mageXPMax}
+            <div class="progress" style="margin-bottom: 0">
+                <div class="progress-bar" role="progressbar" aria-valuenow="{mageXP}" aria-valuemin="0" aria-valuemax="{mageXPMax}" style="width: {magePercentXP}%">
+                    {mageXP} / {mageXPMax} ({magePercentXP}%)
+                </div>
             </div>
         </td>
     </tr>

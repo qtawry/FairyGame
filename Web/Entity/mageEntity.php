@@ -22,6 +22,7 @@ class mageEntity extends sqlLibrary {
     
     public function getInfos($mage){
         $attack = $this->query("select "
+                . "MageId, "
                 . "MageName, "
                 . "MageTypeName, "
                 . "MageSupport + (MageTypeSupport * level) as MageSupport, "
@@ -42,6 +43,16 @@ class mageEntity extends sqlLibrary {
         }
         $sql = trim($sql, ',');
         $sql .= " where MageId = {$id};";
+        $this->query($sql);
+    }
+
+    public function levelUp($mage){
+        $temp = $this->getInfos($mage);
+        $xp = $temp['MageXP'] - round(100 * (pow(2, ($temp['level']-1))));
+        $level = $temp['level'] + 1;
+        $sql = "update MageIs set level={$level} where MageId = {$temp['MageId']};";
+        $this->query($sql);
+        $sql = "update Mage set MageXP={$xp} where MageId = {$temp['MageId']};";
         $this->query($sql);
     }
 }

@@ -29,6 +29,15 @@ class missionModule {
         $mageUpdated['MageGold'] += $mission['MissionGold'];
         $mageUpdated['MageInfluence'] += $mission['MissionInfluence'];
         $mageEntity->updateMage($mageUpdated, $mageId);
+        $mage = $mageEntity->getInfos($mageUpdated['MageName']);
+        //level up if necessary
+        if ($mage['level'] == 1 && $mage['MageXP'] >= round(100 * (pow(2, ($mage['level']-1)))) ||
+            $mage['MageXP'] >= round(100 * (pow(2, ($mage['level'])-1))) -round(100 * (pow(2, ($mage['level'])-2)))){
+            $mageEntity->levelUp($mage['MageName']);
+        }
+
+        header('Location: index.php?pages=overview');
+        exit;
 
 
 
