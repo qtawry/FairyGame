@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ProjetJeux : installation</title>
+    <title>ProjetJeux : Formules</title>
 
     <link rel="stylesheet" href="../Web/public/css/bootstrap.min.css">
 

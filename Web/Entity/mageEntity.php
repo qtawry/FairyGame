@@ -17,7 +17,7 @@ class mageEntity extends sqlLibrary {
     
     public function getAccount($pseudo){
         $sql = "select * from Mage where MageName = '$pseudo';";
-        return $this->query($sql)[0];
+        return $this->query($sql);
     }
     
     public function getInfos($mage){
@@ -48,7 +48,12 @@ class mageEntity extends sqlLibrary {
 
     public function levelUp($mage){
         $temp = $this->getInfos($mage);
-        $xp = $temp['MageXP'] - round(100 * (pow(2, ($temp['level']-1))));
+        if ($temp['level'] == 1){
+            $xp = $temp['MageXP'] - round(100 * (pow(2, ($temp['level']-1))));
+        }
+        else{
+            $xp = $temp['MageXP'] -(round(100 * (pow(2, ($temp['level']) - 1))) - round(100 * (pow(2, ($temp['level']) - 2))));
+        }
         $level = $temp['level'] + 1;
         $sql = "update MageIs set level={$level} where MageId = {$temp['MageId']};";
         $this->query($sql);
