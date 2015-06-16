@@ -17,12 +17,18 @@ class missionModule {
     public function accept($id){
         $mageEntity = new mageEntity();
         $missionEntity = new missionEntity();
-        $mageId = $mageEntity->getAccount($_SESSION['login'])['MageId'];
+        $mageUpdated = $mageEntity->getAccount($_SESSION['login']);
+        $mageId = $mageUpdated['MageId'];
+        unset ($mageUpdated['MageId']);
         $mission = $missionEntity->getById($id);
 
         //Check mission damages
 
         //update Gold influence XP and HP from mage
+        $mageUpdated['MageXP'] += $mission['MissionXP'];
+        $mageUpdated['MageGold'] += $mission['MissionGold'];
+        $mageUpdated['MageInfluence'] += $mission['MissionInfluence'];
+        $mageEntity->updateMage($mageUpdated, $mageId);
 
 
 

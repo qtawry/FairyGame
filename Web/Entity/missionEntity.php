@@ -13,7 +13,7 @@ class missionEntity extends sqlLibrary {
 
     public function getById($id){
         $sql = "select * from Mission where MissionId = {$id};";
-        return $this->query($sql);
+        return $this->query($sql)[0];
     }
 
 }

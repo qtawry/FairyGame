@@ -45,7 +45,25 @@
             Expérience
         </td>
         <td>
-            {mageXP} / {mageXPMax}
+            <div class="progress-bar" role="progressbar" aria-valuenow="{mageXP}" aria-valuemin="0" aria-valuemax="{mageXPMax}" style="width: {magePercentXP}%">
+                {mageXP} / {mageXPMax}
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Argent
+        </td>
+        <td>
+            {mageGold}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Influence
+        </td>
+        <td>
+            {mageInfluence}
         </td>
     </tr>
 </table>

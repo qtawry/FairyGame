@@ -12,6 +12,8 @@ MageAttack BIGINT DEFAULT 0,
 MageHP BIGINT DEFAULT 0,
 MageSupport BIGINT DEFAULT 0,
 MageXP BIGINT DEFAULT 0,
+MageGold BIGINT DEFAULT 0,
+MageInfluence BIGINT DEFAULT 0,
 PRIMARY KEY (MageId) ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS Guild ;
@@ -47,10 +49,10 @@ PRIMARY KEY (ResId) ) ENGINE=InnoDB;
 DROP TABLE IF EXISTS Mission ;
 CREATE TABLE Mission (MissionId BIGINT NOT NULL auto_increment,
 MissionName VARCHAR(150),
-MissionLevel INT,
-MissionXP INT,
-MissionInfluence INT,
-MissionGold INT,
+MissionLevel INT DEFAULT 1,
+MissionXP INT DEFAULT 0,
+MissionInfluence INT DEFAULT 0,
+MissionGold INT DEFAULT 0,
 PRIMARY KEY (MissionId) ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS TypeEffect ;
@@ -62,12 +64,15 @@ PRIMARY KEY (MageTypeAttack, MageTypeDef) ) ENGINE=InnoDB;
 DROP TABLE IF EXISTS Building ;
 CREATE TABLE Building (BuildingId BIGINT NOT NULL auto_increment,
 BuildingName VARCHAR(50),
+BuildingCostGold INT NOT NULL DEFAULT 0,
+BuildingCostInfluence INT NOT NULL DEFAULT 0,
 PRIMARY KEY (BuildingId) ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS Artefact ;
 CREATE TABLE Artefact (ArtefactId BIGINT NOT NULL auto_increment,
 ArtefactName VARCHAR(100),
 ArtefactDescription VARCHAR(200),
+ArtefactCostGold INT NOT NULL DEFAULT 0,
 PRIMARY KEY (ArtefactId) ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS Member ;

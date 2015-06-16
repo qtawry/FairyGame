@@ -52,17 +52,18 @@ $ressources = array(
 );
 
 $buildings = array(
-    "Dortoir"           =>  0,
-    "Bar"               =>  0,
-    "Marchand"          =>  0, 
-    "Tableau de mission"=>  0);
+    "Dortoir"           =>  array(0,1000,0),
+    "Bar"               =>  array(0,1000,10),
+    "Marchand"          =>  array(0,10000,1000),
+    "Tableau de mission"=>  array(0,10000,10000)
+);
 
 $artefacts = array(
-    "Potion de soin 1" => array(0,"Rend 10 PV"),
-    "Potion de soin 2" => array(0,"Rend 50 PV"),
-    "Potion de soin 3" => array(0,"Rend 100 PV"),
-    "Potion de soin 4" => array(0,"Rend 500 PV"),
-    "Gemme de pouvoir" => array(0,"+20 attaque"),
+    "Potion de soin 1" => array(0,"Rend 10 PV", 10),
+    "Potion de soin 2" => array(0,"Rend 50 PV", 90),
+    "Potion de soin 3" => array(0,"Rend 100 PV", 150),
+    "Potion de soin 4" => array(0,"Rend 500 PV", 500),
+    "Gemme de pouvoir" => array(0,"+20 attaque", 10000),
 );
 
 try {
@@ -112,14 +113,15 @@ try {
     echo "<span class='label label-success'>DONE</span></p>";
     
     echo "<p>Creating Buildings";
-    foreach ($buildings as $building=>&$id) {
-        $db->query("insert into Building values (NULL, '".$building."');",$id);
+    foreach ($buildings as $building=>&$attributes) {
+        var_dump("insert into Building values (NULL, '{$building}', {$attributes[1]}, {$attributes[2]});");
+        $db->query("insert into Building values (NULL, '{$building}', {$attributes[1]}, {$attributes[2]});",$attributes[0]);
     }
     echo "<span class='label label-success'>DONE</span></p>";
     
     echo "<p>Creating Artefact";
     foreach ($artefacts as $artefact => &$attributes) {
-        $db->query("insert into Artefact values (NULL, '".$artefact."', '".$attributes[1]."');", $attributes[0]);
+        $db->query("insert into Artefact values (NULL, '".$artefact."', '".$attributes[1]."', {$attributes[2]});", $attributes[0]);
     }
     echo "<span class='label label-success'>DONE</span></p>";
     
@@ -131,7 +133,7 @@ try {
     $db->query("insert into Required(ArtefactId, BuildingId, RequiredLevel)  values (".$artefacts["Gemme de pouvoir"][0].",".$buildings["Marchand"][0].", 3);");
     
     echo "<span class='label label-success'>DONE</span></p>";
-    
+    /*
     echo "<p>Creating Buildings costs";
     $db->query("insert into BuildingCost (ResId, BuildingId, BCAmount) values({$ressources['Argent'][0]},{$buildings['Dortoir'][0]},1000);");
     
@@ -157,7 +159,7 @@ try {
 
     $db->query("insert into ArtefactCost (ResId, ArtefactId, ACAmount) values({$ressources['Argent'][0]},{$artefacts['Gemme de pouvoir'][0]},10000);");
     echo "<span class='label label-success'>DONE</span></p>";
-
+    */
     echo "<p>Creating Missions";
     $db->query("insert into Mission (MissionName, MissionLevel, MissionXP, MissionInfluence, MissionGold) values('Mission 1', 1, 20, 10, 100);");
     echo "<span class='label label-warning'>TODO</span></p>";
