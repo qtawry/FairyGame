@@ -14,9 +14,9 @@
 
 </head>
 <body>
+<p><a href="https://graphsketch.com/">Check your formule with a graph</a> </p>
 
 <h1>Batiments</h1>
-
 <div class="row">
     <div class="col-md-3">
         <h2>Bar</h2>
@@ -104,32 +104,141 @@
             ?>
         </div>
     </div>
-    <h1>Mage</h1>
 
-    <div class="row">
+<h1>Mage</h1>
+<div class="row">
 
-        <div class="col-md-3">
-            <h2>XP</h2>
-            <?php
-            echo "<table class='table'> <tr>
+    <div class="col-md-3">
+        <h2>XP</h2>
+        <?php
+        echo "<table class='table'> <tr>
                 <td>Niveau</td>
                 <td>XP total</td>
                 <td>XP to level up</td>
                 </tr>";
-            for ($i = 1; $i <= 10; $i++) {
-                echo "<tr>";
-                echo "<td>$i</td>";
+        for ($i = 1; $i <= 10; $i++) {
+            echo "<tr>";
+            echo "<td>$i</td>";
+            echo "<td>" . round(100 * (pow(2, ($i) - 1))) . "</td>";
+            if ($i == 1)
                 echo "<td>" . round(100 * (pow(2, ($i) - 1))) . "</td>";
-                if ($i == 1)
-                    echo "<td>" . round(100 * (pow(2, ($i) - 1))) . "</td>";
-                else
-                    echo "<td>" . (round(100 * (pow(2, ($i) - 1))) - round(100 * (pow(2, ($i) - 2)))) . "</td>";
-                echo '</tr>';
-            }
-            echo "</table>";
-            ?>
-        </div>
+            else
+                echo "<td>" . (round(100 * (pow(2, ($i) - 1))) - round(100 * (pow(2, ($i) - 2)))) . "</td>";
+            echo '</tr>';
+        }
+        echo "</table>";
+        ?>
+    </div>
+    <div class="col-md-4">
+        <h2>Damages</h2>
+        <?php
+        echo "<table class='table'> <tr>
+                <td>Niveau Mage</td>
+                <td>DPS</td>
+                <td>Support</td>
+                <td>Tank</td>
+                </tr>";
+        for ($i = 1; $i <= 10; $i++) {
+            echo "<tr>";
+            echo "<td>$i</td>";
+            echo '<td>' . floor(($i*3)*(100+$i)/100) . '</td>';
+            echo '<td>' . floor(($i)*(100+$i)/100) . '</td>';
+            echo '<td>' . floor(($i)*(100+$i)/100) . '</td>';
+            echo '</tr>';
+        }
+        echo "</table>";
+        ?>
     </div>
 </div>
+
+<h1>Missions</h1>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Difficulty mission</h2>
+        <?php
+        echo "<table class='table'> <tr>
+                <td>Mission level</td>
+                <td>HP</td>
+                <td>Damages</td>
+                </tr>";
+        for ($i = 1; $i <= 10; $i++) {
+            echo "<tr>";
+            echo "<td>$i</td>";
+            //echo '<td>' . max(0,round(($l+$i)*$i)) . ' <br/> '. floor(pow($i,1.44)).'</td>';
+            echo '<td>'. floor(pow($i,1.82)). '</td>';
+            echo '<td>'. floor(pow($i,2.2)). '</td>';
+            echo '</tr>';
+        }
+        echo "</table>";
+        ?>
+    </div>
+</div>
+<h1>Mission damages</h1>
+<div class="row">
+    <div class="col-md-6">
+        <h2>DPS & Support damages taken per round</h2>
+        <?php
+        echo "<table class='table'> <tr>
+                <td>Niveau Mage</td>
+                <td>Miss lvl 1</td>
+                <td>Miss lvl 2</td>
+                <td>Miss lvl 3</td>
+                <td>Miss lvl 4</td>
+                <td>Miss lvl 5</td>
+                <td>Miss lvl 6</td>
+                <td>Miss lvl 7</td>
+                <td>Miss lvl 8</td>
+                <td>Miss lvl 9</td>
+                <td>Miss lvl 10</td>
+                </tr>";
+        for ($i = 1; $i <= 10; $i++) {
+            echo "<tr>";
+            echo "<td>$i</td>";
+            for ($l = 1 ; $l<=10; $l++){
+                //echo '<td>' . ((2*(3*$i) + 1*$i) - max(0,round(2*$l-$i)) * 3) ." <br/> " . ((2*(3*$i) + 1*$i) - max(0,round(2*$l-$i)) * 6)  . '</td>';
+                echo '<td>';
+                echo round(pow($l,2.2)/$i);
+                echo '</td>';
+            }
+            echo '</tr>';
+        }
+        echo "</table>";
+        ?>
+    </div>
+
+    <!-- Damages taken -->
+    <div class="col-md-6">
+        <h2>Tank damages taken per round</h2>
+        <?php
+        echo "<table class='table'> <tr>
+                <td>Niveau Mage</td>
+                <td>Miss lvl 1</td>
+                <td>Miss lvl 2</td>
+                <td>Miss lvl 3</td>
+                <td>Miss lvl 4</td>
+                <td>Miss lvl 5</td>
+                <td>Miss lvl 6</td>
+                <td>Miss lvl 7</td>
+                <td>Miss lvl 8</td>
+                <td>Miss lvl 9</td>
+                <td>Miss lvl 10</td>
+                </tr>";
+        for ($i = 1; $i <= 10; $i++) {
+            echo "<tr>";
+            echo "<td>$i</td>";
+            for ($l = 1 ; $l<=10; $l++){
+                //echo '<td>' . ((2*(2*$i) + 1*$i) - max(0,round(2*$l-$i)) * 3) ." <br/> " . ((2*(2*$i) + 1*$i) - max(0,round(2*$l-$i)) * 6)  . '</td>';
+                echo '<td>';
+                echo round(pow($l,2.2)/($i*3));
+                echo '</td>';
+            }
+            echo '</tr>';
+        }
+        echo "</table>";
+        ?>
+    </div>
+</div>
+</div>
+
 </body>
 </html>

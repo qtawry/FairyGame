@@ -27,7 +27,7 @@ class missionModule {
         /* Magelevel vs MissionLevel
          * MageAttack * 2 + Support
          * MageHP
-         * difficulty = MissionLevel - (MageLevel - MissionMage)
+         * difficulty = MissionLevel - (MageLevel - MissionLevel)
          * HP += Atk * 2 + Support - difficulty * rand(3,5) 
          * 
          * EX : Mage 1 Mission 2 => difficulty = 3
